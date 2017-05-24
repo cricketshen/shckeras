@@ -28,3 +28,13 @@ def load_file_data(filename):
     raw_text = raw_text.lower()
     # chars = len(raw_text)
     return raw_text
+
+from keras.preprocessing import image
+from keras.applications.resnet50 import preprocess_input, decode_predictions
+def load_image(img_path, size=(224,224)):
+    # img_path = 'elephant.jpg'
+    img = image.load_img(img_path, target_size=size)
+    x = image.img_to_array(img)
+    x = np.expand_dims(x, axis=0)
+    x = preprocess_input(x)
+
